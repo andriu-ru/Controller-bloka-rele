@@ -1,0 +1,1494 @@
+
+Controller bloka rele.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000006f8  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000016  00800060  000006f8  0000078c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000015  00800076  00800076  000007a2  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000007a2  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000007d4  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000068  00000000  00000000  00000810  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000c28  00000000  00000000  00000878  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000604  00000000  00000000  000014a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000008f7  00000000  00000000  00001aa4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000e0  00000000  00000000  0000239c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000441  00000000  00000000  0000247c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000042f  00000000  00000000  000028bd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000058  00000000  00000000  00002cec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	33 c1       	rjmp	.+614    	; 0x274 <__vector_6>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	25 c0       	rjmp	.+74     	; 0x5e <__vector_9>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e8 ef       	ldi	r30, 0xF8	; 248
+  3a:	f6 e0       	ldi	r31, 0x06	; 6
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a6 37       	cpi	r26, 0x76	; 118
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	20 e0       	ldi	r18, 0x00	; 0
+  4a:	a6 e7       	ldi	r26, 0x76	; 118
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	ab 38       	cpi	r26, 0x8B	; 139
+  54:	b2 07       	cpc	r27, r18
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	ec d1       	rcall	.+984    	; 0x432 <main>
+  5a:	4c c3       	rjmp	.+1688   	; 0x6f4 <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <__vector_9>:
+
+
+
+/********* Вектор прерывания таймера счетчика 0 по переполнению **********/
+ISR(TIMER0_OVF_vect)
+{
+  5e:	1f 92       	push	r1
+  60:	0f 92       	push	r0
+  62:	0f b6       	in	r0, 0x3f	; 63
+  64:	0f 92       	push	r0
+  66:	11 24       	eor	r1, r1
+  68:	8f 93       	push	r24
+  6a:	ef 93       	push	r30
+  6c:	ff 93       	push	r31
+
+/********************************************************************************************************************************/
+/********************************************************************************************************************************/
+
+		if (a==1) // Если переменная a равна 2 выводим цифру на второй сигмент первой группы индикатора
+  6e:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <a>
+  72:	81 30       	cpi	r24, 0x01	; 1
+  74:	11 f5       	brne	.+68     	; 0xba <__vector_9+0x5c>
+		{
+			PORTB &= ~((1<<PB5)|(1<<PB4)|(1<<PB3)|(1<<PB2)|(1<<PB1));
+  76:	88 b3       	in	r24, 0x18	; 24
+  78:	81 7c       	andi	r24, 0xC1	; 193
+  7a:	88 bb       	out	0x18, r24	; 24
+			
+			if (viborGruppi == 1)  // Если переменная viborGruppi равна одному тогда первая группа сигментов начинает моргать ожедаю настройки.
+  7c:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+  80:	81 30       	cpi	r24, 0x01	; 1
+  82:	79 f4       	brne	.+30     	; 0xa2 <__vector_9+0x44>
+			{
+				if (inv_1 == 1)
+  84:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <inv_1>
+  88:	81 30       	cpi	r24, 0x01	; 1
+  8a:	09 f0       	breq	.+2      	; 0x8e <__vector_9+0x30>
+  8c:	d4 c0       	rjmp	.+424    	; 0x236 <__vector_9+0x1d8>
+				{
+					PORTB |= (1<<PB0);
+  8e:	c0 9a       	sbi	0x18, 0	; 24
+				}
+				if (inv_1 == 0)
+  90:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <inv_1>
+  94:	81 11       	cpse	r24, r1
+  96:	01 c0       	rjmp	.+2      	; 0x9a <__vector_9+0x3c>
+				{
+					PORTB &= ~(1<<PB0);
+  98:	c0 98       	cbi	0x18, 0	; 24
+				}
+			}
+			
+			
+			if (viborGruppi != 1)  // Если переменная viborGruppi не равна одному, первая группа сигменнтов просто светится не моргает.
+  9a:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+  9e:	81 30       	cpi	r24, 0x01	; 1
+  a0:	09 f0       	breq	.+2      	; 0xa4 <__vector_9+0x46>
+			{
+				PORTB |= (1<<PB0);
+  a2:	c0 9a       	sbi	0x18, 0	; 24
+			}
+			
+			PORTD = digits [gr1_10]; // Десятки
+  a4:	e0 91 87 00 	lds	r30, 0x0087	; 0x800087 <gr1_10>
+  a8:	f0 91 88 00 	lds	r31, 0x0088	; 0x800088 <gr1_10+0x1>
+  ac:	ee 0f       	add	r30, r30
+  ae:	ff 1f       	adc	r31, r31
+  b0:	e0 5a       	subi	r30, 0xA0	; 160
+  b2:	ff 4f       	sbci	r31, 0xFF	; 255
+  b4:	80 81       	ld	r24, Z
+  b6:	82 bb       	out	0x12, r24	; 18
+  b8:	b2 c0       	rjmp	.+356    	; 0x21e <__vector_9+0x1c0>
+			
+		}
+		
+/********************************************************************************************************************************/
+	
+		else if (a==2) // Если переменная a равна 1 выводим цифру на первый сигмент первой группы индикатора
+  ba:	82 30       	cpi	r24, 0x02	; 2
+  bc:	11 f5       	brne	.+68     	; 0x102 <__vector_9+0xa4>
+		{
+			PORTB &= ~((1<<PB5)|(1<<PB4)|(1<<PB3)|(1<<PB2)|(1<<PB0)); // Гисим ненужные разряды индикаторов
+  be:	88 b3       	in	r24, 0x18	; 24
+  c0:	82 7c       	andi	r24, 0xC2	; 194
+  c2:	88 bb       	out	0x18, r24	; 24
+			
+			if (viborGruppi == 1) // Если переменная viborGruppi равна одному тогда первая пара сигментов начинает моргать в ожедании настройки.
+  c4:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+  c8:	81 30       	cpi	r24, 0x01	; 1
+  ca:	79 f4       	brne	.+30     	; 0xea <__vector_9+0x8c>
+			{
+				if (inv_1 == 1)
+  cc:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <inv_1>
+  d0:	81 30       	cpi	r24, 0x01	; 1
+  d2:	09 f0       	breq	.+2      	; 0xd6 <__vector_9+0x78>
+  d4:	b4 c0       	rjmp	.+360    	; 0x23e <__vector_9+0x1e0>
+				{
+					PORTB |= (1<<PB1);
+  d6:	c1 9a       	sbi	0x18, 1	; 24
+				}
+				
+				if (inv_1 == 0)
+  d8:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <inv_1>
+  dc:	81 11       	cpse	r24, r1
+  de:	01 c0       	rjmp	.+2      	; 0xe2 <__vector_9+0x84>
+				{
+					PORTB &= ~(1<<PB1);
+  e0:	c1 98       	cbi	0x18, 1	; 24
+				}
+			} 
+			   
+			if (viborGruppi != 1) // Если переменная viborGruppi не равна одному, первая пара сигменнтов просто светится не моргает.
+  e2:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+  e6:	81 30       	cpi	r24, 0x01	; 1
+  e8:	09 f0       	breq	.+2      	; 0xec <__vector_9+0x8e>
+			{
+				PORTB |= (1<<PB1);
+  ea:	c1 9a       	sbi	0x18, 1	; 24
+			}
+			
+			
+			PORTD = digits [gr1_1]; // Единицы
+  ec:	e0 91 89 00 	lds	r30, 0x0089	; 0x800089 <gr1_1>
+  f0:	f0 91 8a 00 	lds	r31, 0x008A	; 0x80008a <gr1_1+0x1>
+  f4:	ee 0f       	add	r30, r30
+  f6:	ff 1f       	adc	r31, r31
+  f8:	e0 5a       	subi	r30, 0xA0	; 160
+  fa:	ff 4f       	sbci	r31, 0xFF	; 255
+  fc:	80 81       	ld	r24, Z
+  fe:	82 bb       	out	0x12, r24	; 18
+ 100:	8e c0       	rjmp	.+284    	; 0x21e <__vector_9+0x1c0>
+		
+/********************************************************************************************************************************/
+/********************************************************************************************************************************/
+		
+		
+		else if (a==3) // Если переменная a равна 4 выводим цифру на второй сигмент второй группы индикатора
+ 102:	83 30       	cpi	r24, 0x03	; 3
+ 104:	11 f5       	brne	.+68     	; 0x14a <__vector_9+0xec>
+		{
+			PORTB &= ~((1<<PB5)|(1<<PB4)|(1<<PB3)|(1<<PB1)|(1<<PB0));
+ 106:	88 b3       	in	r24, 0x18	; 24
+ 108:	84 7c       	andi	r24, 0xC4	; 196
+ 10a:	88 bb       	out	0x18, r24	; 24
+			
+			if (viborGruppi == 2) // Если переменная viborGruppi равна двум тогда вторая пара сигментов начинает моргать в ожедании настройки.
+ 10c:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+ 110:	82 30       	cpi	r24, 0x02	; 2
+ 112:	79 f4       	brne	.+30     	; 0x132 <__vector_9+0xd4>
+			{
+				if (inv_1 == 1)
+ 114:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <inv_1>
+ 118:	81 30       	cpi	r24, 0x01	; 1
+ 11a:	09 f0       	breq	.+2      	; 0x11e <__vector_9+0xc0>
+ 11c:	94 c0       	rjmp	.+296    	; 0x246 <__vector_9+0x1e8>
+				{
+					PORTB |= (1<<PB2);
+ 11e:	c2 9a       	sbi	0x18, 2	; 24
+				}
+				
+				if (inv_1 == 0)
+ 120:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <inv_1>
+ 124:	81 11       	cpse	r24, r1
+ 126:	01 c0       	rjmp	.+2      	; 0x12a <__vector_9+0xcc>
+				{
+					PORTB &= ~(1<<PB2);
+ 128:	c2 98       	cbi	0x18, 2	; 24
+				}
+			}
+			
+			if (viborGruppi != 2) // Если переменная viborGruppi не равна двум, вторая пара сигменнтов просто светится не моргает.
+ 12a:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+ 12e:	82 30       	cpi	r24, 0x02	; 2
+ 130:	09 f0       	breq	.+2      	; 0x134 <__vector_9+0xd6>
+			{
+				PORTB |= (1<<PB2);
+ 132:	c2 9a       	sbi	0x18, 2	; 24
+			}
+			
+			PORTD = digits [gr2_10]; // Десятки
+ 134:	e0 91 83 00 	lds	r30, 0x0083	; 0x800083 <gr2_10>
+ 138:	f0 91 84 00 	lds	r31, 0x0084	; 0x800084 <gr2_10+0x1>
+ 13c:	ee 0f       	add	r30, r30
+ 13e:	ff 1f       	adc	r31, r31
+ 140:	e0 5a       	subi	r30, 0xA0	; 160
+ 142:	ff 4f       	sbci	r31, 0xFF	; 255
+ 144:	80 81       	ld	r24, Z
+ 146:	82 bb       	out	0x12, r24	; 18
+ 148:	6a c0       	rjmp	.+212    	; 0x21e <__vector_9+0x1c0>
+		}
+		
+/********************************************************************************************************************************/
+		
+		else if (a==4) // Если переменная a равна 4 выводим цифру на первый сигмент третьей группы индикатора
+ 14a:	84 30       	cpi	r24, 0x04	; 4
+ 14c:	11 f5       	brne	.+68     	; 0x192 <__vector_9+0x134>
+		{
+			PORTB &= ~((1<<PB5)|(1<<PB4)|(1<<PB2)|(1<<PB1)|(1<<PB0));
+ 14e:	88 b3       	in	r24, 0x18	; 24
+ 150:	88 7c       	andi	r24, 0xC8	; 200
+ 152:	88 bb       	out	0x18, r24	; 24
+			
+			if (viborGruppi == 2) // Если переменная viborGruppi равна двум тогда вторая пара сигментов начинает моргать в ожедании настройки.
+ 154:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+ 158:	82 30       	cpi	r24, 0x02	; 2
+ 15a:	79 f4       	brne	.+30     	; 0x17a <__vector_9+0x11c>
+			{
+				if (inv_1 == 1)
+ 15c:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <inv_1>
+ 160:	81 30       	cpi	r24, 0x01	; 1
+ 162:	09 f0       	breq	.+2      	; 0x166 <__vector_9+0x108>
+ 164:	74 c0       	rjmp	.+232    	; 0x24e <__vector_9+0x1f0>
+				{
+					PORTB |= (1<<PB3);
+ 166:	c3 9a       	sbi	0x18, 3	; 24
+				}
+				
+				if (inv_1 == 0)
+ 168:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <inv_1>
+ 16c:	81 11       	cpse	r24, r1
+ 16e:	01 c0       	rjmp	.+2      	; 0x172 <__vector_9+0x114>
+				{
+					PORTB &= ~(1<<PB3);
+ 170:	c3 98       	cbi	0x18, 3	; 24
+				}
+			}
+			
+			if (viborGruppi != 2) // Если переменная viborGruppi не равна двум, вторая пара сигменнтов просто светится не моргает.
+ 172:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+ 176:	82 30       	cpi	r24, 0x02	; 2
+ 178:	09 f0       	breq	.+2      	; 0x17c <__vector_9+0x11e>
+			{
+				PORTB |= (1<<PB3);
+ 17a:	c3 9a       	sbi	0x18, 3	; 24
+			}
+			PORTD = digits [gr2_1]; // Единицы
+ 17c:	e0 91 85 00 	lds	r30, 0x0085	; 0x800085 <gr2_1>
+ 180:	f0 91 86 00 	lds	r31, 0x0086	; 0x800086 <gr2_1+0x1>
+ 184:	ee 0f       	add	r30, r30
+ 186:	ff 1f       	adc	r31, r31
+ 188:	e0 5a       	subi	r30, 0xA0	; 160
+ 18a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 18c:	80 81       	ld	r24, Z
+ 18e:	82 bb       	out	0x12, r24	; 18
+ 190:	46 c0       	rjmp	.+140    	; 0x21e <__vector_9+0x1c0>
+		}
+		
+/********************************************************************************************************************************/
+/********************************************************************************************************************************/		
+		
+		else if (a==5) // Если переменная a равна 5 выводим цифру на второй сигмент третьей группы индикатора
+ 192:	85 30       	cpi	r24, 0x05	; 5
+ 194:	11 f5       	brne	.+68     	; 0x1da <__vector_9+0x17c>
+		{
+			PORTB &= ~((1<<PB5)|(1<<PB3)|(1<<PB2)|(1<<PB1)|(1<<PB0));
+ 196:	88 b3       	in	r24, 0x18	; 24
+ 198:	80 7d       	andi	r24, 0xD0	; 208
+ 19a:	88 bb       	out	0x18, r24	; 24
+			
+			if (viborGruppi == 3) // Если переменная viborGruppi равна трем тогда третья пара сигментов начинает моргать в ожедании настройки.
+ 19c:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+ 1a0:	83 30       	cpi	r24, 0x03	; 3
+ 1a2:	79 f4       	brne	.+30     	; 0x1c2 <__vector_9+0x164>
+			{
+				if (inv_1 == 1)
+ 1a4:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <inv_1>
+ 1a8:	81 30       	cpi	r24, 0x01	; 1
+ 1aa:	09 f0       	breq	.+2      	; 0x1ae <__vector_9+0x150>
+ 1ac:	54 c0       	rjmp	.+168    	; 0x256 <__vector_9+0x1f8>
+				{
+					PORTB |= (1<<PB4);
+ 1ae:	c4 9a       	sbi	0x18, 4	; 24
+				}
+				
+				if (inv_1 == 0)
+ 1b0:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <inv_1>
+ 1b4:	81 11       	cpse	r24, r1
+ 1b6:	01 c0       	rjmp	.+2      	; 0x1ba <__vector_9+0x15c>
+				{
+					PORTB &= ~(1<<PB4);
+ 1b8:	c4 98       	cbi	0x18, 4	; 24
+				}
+			}
+			
+			if (viborGruppi != 3) // Если переменная viborGruppi не равна трем, третья пара сигменнтов просто светится не моргает.
+ 1ba:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+ 1be:	83 30       	cpi	r24, 0x03	; 3
+ 1c0:	09 f0       	breq	.+2      	; 0x1c4 <__vector_9+0x166>
+			{
+				PORTB |= (1<<PB4);
+ 1c2:	c4 9a       	sbi	0x18, 4	; 24
+			}
+			
+			PORTD = digits [gr3_10]; // Десятки
+ 1c4:	e0 91 7f 00 	lds	r30, 0x007F	; 0x80007f <gr3_10>
+ 1c8:	f0 91 80 00 	lds	r31, 0x0080	; 0x800080 <gr3_10+0x1>
+ 1cc:	ee 0f       	add	r30, r30
+ 1ce:	ff 1f       	adc	r31, r31
+ 1d0:	e0 5a       	subi	r30, 0xA0	; 160
+ 1d2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1d4:	80 81       	ld	r24, Z
+ 1d6:	82 bb       	out	0x12, r24	; 18
+ 1d8:	22 c0       	rjmp	.+68     	; 0x21e <__vector_9+0x1c0>
+		}
+		
+/********************************************************************************************************************************/		
+		
+		else if (a==6) // Если переменная a равна 6 выводим цифру на первый сигмент третьей группы индикатора
+ 1da:	86 30       	cpi	r24, 0x06	; 6
+ 1dc:	01 f5       	brne	.+64     	; 0x21e <__vector_9+0x1c0>
+		{
+			PORTB &= ~((1<<PB4)|(1<<PB3)|(1<<PB2)|(1<<PB1)|(1<<PB0));
+ 1de:	88 b3       	in	r24, 0x18	; 24
+ 1e0:	80 7e       	andi	r24, 0xE0	; 224
+ 1e2:	88 bb       	out	0x18, r24	; 24
+			
+			if (viborGruppi == 3) // Если переменная viborGruppi равна трем тогда третья пара сигментов начинает моргать в ожедании настройки.
+ 1e4:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+ 1e8:	83 30       	cpi	r24, 0x03	; 3
+ 1ea:	71 f4       	brne	.+28     	; 0x208 <__vector_9+0x1aa>
+			{
+				if (inv_1 == 1)
+ 1ec:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <inv_1>
+ 1f0:	81 30       	cpi	r24, 0x01	; 1
+ 1f2:	a9 f5       	brne	.+106    	; 0x25e <__vector_9+0x200>
+				{
+					PORTB |= (1<<PB5);
+ 1f4:	c5 9a       	sbi	0x18, 5	; 24
+				}
+				
+				if (inv_1 == 0)
+ 1f6:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <inv_1>
+ 1fa:	81 11       	cpse	r24, r1
+ 1fc:	01 c0       	rjmp	.+2      	; 0x200 <__vector_9+0x1a2>
+				{
+					PORTB &= ~(1<<PB5);
+ 1fe:	c5 98       	cbi	0x18, 5	; 24
+				}
+			}
+			
+			if (viborGruppi != 3) // Если переменная viborGruppi не равна трем, третья пара сигменнтов просто светится не моргает.
+ 200:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+ 204:	83 30       	cpi	r24, 0x03	; 3
+ 206:	09 f0       	breq	.+2      	; 0x20a <__vector_9+0x1ac>
+			{
+				PORTB |= (1<<PB5);
+ 208:	c5 9a       	sbi	0x18, 5	; 24
+			}
+			PORTD = digits [gr3_1]; // Единицы
+ 20a:	e0 91 81 00 	lds	r30, 0x0081	; 0x800081 <gr3_1>
+ 20e:	f0 91 82 00 	lds	r31, 0x0082	; 0x800082 <gr3_1+0x1>
+ 212:	ee 0f       	add	r30, r30
+ 214:	ff 1f       	adc	r31, r31
+ 216:	e0 5a       	subi	r30, 0xA0	; 160
+ 218:	ff 4f       	sbci	r31, 0xFF	; 255
+ 21a:	80 81       	ld	r24, Z
+ 21c:	82 bb       	out	0x12, r24	; 18
+		}
+		
+		a++;
+ 21e:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <a>
+ 222:	8f 5f       	subi	r24, 0xFF	; 255
+		if (a>6) a=1;
+ 224:	87 30       	cpi	r24, 0x07	; 7
+ 226:	18 f4       	brcc	.+6      	; 0x22e <__vector_9+0x1d0>
+				PORTB |= (1<<PB5);
+			}
+			PORTD = digits [gr3_1]; // Единицы
+		}
+		
+		a++;
+ 228:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <a>
+ 22c:	1b c0       	rjmp	.+54     	; 0x264 <__vector_9+0x206>
+		if (a>6) a=1;
+ 22e:	81 e0       	ldi	r24, 0x01	; 1
+ 230:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <a>
+	
+}
+ 234:	17 c0       	rjmp	.+46     	; 0x264 <__vector_9+0x206>
+			{
+				if (inv_1 == 1)
+				{
+					PORTB |= (1<<PB0);
+				}
+				if (inv_1 == 0)
+ 236:	88 23       	and	r24, r24
+ 238:	09 f4       	brne	.+2      	; 0x23c <__vector_9+0x1de>
+ 23a:	2e cf       	rjmp	.-420    	; 0x98 <__vector_9+0x3a>
+ 23c:	33 cf       	rjmp	.-410    	; 0xa4 <__vector_9+0x46>
+				if (inv_1 == 1)
+				{
+					PORTB |= (1<<PB1);
+				}
+				
+				if (inv_1 == 0)
+ 23e:	88 23       	and	r24, r24
+ 240:	09 f4       	brne	.+2      	; 0x244 <__vector_9+0x1e6>
+ 242:	4e cf       	rjmp	.-356    	; 0xe0 <__vector_9+0x82>
+ 244:	53 cf       	rjmp	.-346    	; 0xec <__vector_9+0x8e>
+				if (inv_1 == 1)
+				{
+					PORTB |= (1<<PB2);
+				}
+				
+				if (inv_1 == 0)
+ 246:	88 23       	and	r24, r24
+ 248:	09 f4       	brne	.+2      	; 0x24c <__vector_9+0x1ee>
+ 24a:	6e cf       	rjmp	.-292    	; 0x128 <__vector_9+0xca>
+ 24c:	73 cf       	rjmp	.-282    	; 0x134 <__vector_9+0xd6>
+				if (inv_1 == 1)
+				{
+					PORTB |= (1<<PB3);
+				}
+				
+				if (inv_1 == 0)
+ 24e:	88 23       	and	r24, r24
+ 250:	09 f4       	brne	.+2      	; 0x254 <__vector_9+0x1f6>
+ 252:	8e cf       	rjmp	.-228    	; 0x170 <__vector_9+0x112>
+ 254:	93 cf       	rjmp	.-218    	; 0x17c <__vector_9+0x11e>
+				if (inv_1 == 1)
+				{
+					PORTB |= (1<<PB4);
+				}
+				
+				if (inv_1 == 0)
+ 256:	88 23       	and	r24, r24
+ 258:	09 f4       	brne	.+2      	; 0x25c <__vector_9+0x1fe>
+ 25a:	ae cf       	rjmp	.-164    	; 0x1b8 <__vector_9+0x15a>
+ 25c:	b3 cf       	rjmp	.-154    	; 0x1c4 <__vector_9+0x166>
+				if (inv_1 == 1)
+				{
+					PORTB |= (1<<PB5);
+				}
+				
+				if (inv_1 == 0)
+ 25e:	88 23       	and	r24, r24
+ 260:	71 f2       	breq	.-100    	; 0x1fe <__vector_9+0x1a0>
+ 262:	d3 cf       	rjmp	.-90     	; 0x20a <__vector_9+0x1ac>
+		}
+		
+		a++;
+		if (a>6) a=1;
+	
+}
+ 264:	ff 91       	pop	r31
+ 266:	ef 91       	pop	r30
+ 268:	8f 91       	pop	r24
+ 26a:	0f 90       	pop	r0
+ 26c:	0f be       	out	0x3f, r0	; 63
+ 26e:	0f 90       	pop	r0
+ 270:	1f 90       	pop	r1
+ 272:	18 95       	reti
+
+00000274 <__vector_6>:
+
+/********* Вектор прерывания таймера счетчика 1 по совпадению **********/
+
+ISR(TIMER1_COMPA_vect)
+{
+ 274:	1f 92       	push	r1
+ 276:	0f 92       	push	r0
+ 278:	0f b6       	in	r0, 0x3f	; 63
+ 27a:	0f 92       	push	r0
+ 27c:	11 24       	eor	r1, r1
+ 27e:	8f 93       	push	r24
+	if (inv_1 == 1)
+ 280:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <inv_1>
+ 284:	81 30       	cpi	r24, 0x01	; 1
+ 286:	19 f4       	brne	.+6      	; 0x28e <__vector_6+0x1a>
+	{
+		inv_1 = 0;
+ 288:	10 92 7d 00 	sts	0x007D, r1	; 0x80007d <inv_1>
+ 28c:	05 c0       	rjmp	.+10     	; 0x298 <__vector_6+0x24>
+	}
+	else if (inv_1 == 0)
+ 28e:	81 11       	cpse	r24, r1
+ 290:	03 c0       	rjmp	.+6      	; 0x298 <__vector_6+0x24>
+	{
+		inv_1 = 1;
+ 292:	81 e0       	ldi	r24, 0x01	; 1
+ 294:	80 93 7d 00 	sts	0x007D, r24	; 0x80007d <inv_1>
+	}
+	
+	if (~PINC & (1<<PC1))
+ 298:	99 99       	sbic	0x13, 1	; 19
+ 29a:	0c c0       	rjmp	.+24     	; 0x2b4 <__vector_6+0x40>
+	{
+		ucDelayBatton_2++;
+ 29c:	80 91 7c 00 	lds	r24, 0x007C	; 0x80007c <ucDelayBatton_2>
+ 2a0:	8f 5f       	subi	r24, 0xFF	; 255
+		
+		if (ucDelayBatton_2 > 6)
+ 2a2:	87 30       	cpi	r24, 0x07	; 7
+ 2a4:	18 f4       	brcc	.+6      	; 0x2ac <__vector_6+0x38>
+		inv_1 = 1;
+	}
+	
+	if (~PINC & (1<<PC1))
+	{
+		ucDelayBatton_2++;
+ 2a6:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <ucDelayBatton_2>
+ 2aa:	07 c0       	rjmp	.+14     	; 0x2ba <__vector_6+0x46>
+		
+		if (ucDelayBatton_2 > 6)
+		{
+			ucDelayBatton_2 = 6;
+ 2ac:	86 e0       	ldi	r24, 0x06	; 6
+ 2ae:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <ucDelayBatton_2>
+ 2b2:	03 c0       	rjmp	.+6      	; 0x2ba <__vector_6+0x46>
+		}
+	}
+	
+	else if (PINC |= (1<<PC1))
+ 2b4:	99 9a       	sbi	0x13, 1	; 19
+	{
+		ucDelayBatton_2 = 0;
+ 2b6:	10 92 7c 00 	sts	0x007C, r1	; 0x80007c <ucDelayBatton_2>
+	}
+	
+	
+	if (ucDelayTimer < 120)
+ 2ba:	80 91 77 00 	lds	r24, 0x0077	; 0x800077 <ucDelayTimer>
+ 2be:	88 37       	cpi	r24, 0x78	; 120
+ 2c0:	18 f4       	brcc	.+6      	; 0x2c8 <__vector_6+0x54>
+	{
+		ucDelayTimer++;
+ 2c2:	8f 5f       	subi	r24, 0xFF	; 255
+ 2c4:	80 93 77 00 	sts	0x0077, r24	; 0x800077 <ucDelayTimer>
+	}
+		
+	if (ucDelaySeconds < 1) ucDelaySeconds++;
+ 2c8:	80 91 76 00 	lds	r24, 0x0076	; 0x800076 <__data_end>
+ 2cc:	81 11       	cpse	r24, r1
+ 2ce:	03 c0       	rjmp	.+6      	; 0x2d6 <__vector_6+0x62>
+ 2d0:	81 e0       	ldi	r24, 0x01	; 1
+ 2d2:	80 93 76 00 	sts	0x0076, r24	; 0x800076 <__data_end>
+	
+}
+ 2d6:	8f 91       	pop	r24
+ 2d8:	0f 90       	pop	r0
+ 2da:	0f be       	out	0x3f, r0	; 63
+ 2dc:	0f 90       	pop	r0
+ 2de:	1f 90       	pop	r1
+ 2e0:	18 95       	reti
+
+000002e2 <chislo_1>:
+/********* функция раскладывает число на десятки и единицы **********/
+
+void chislo_1 (unsigned char chislo_a)
+{
+	
+	gr1_10 = chislo_a / 10; // Переменной gr1_10 писваеваем цифру оставшуюся от вычисления chislo_1%100/10, это будут десятки в первой группе индикаторов
+ 2e2:	9d ec       	ldi	r25, 0xCD	; 205
+ 2e4:	89 9f       	mul	r24, r25
+ 2e6:	91 2d       	mov	r25, r1
+ 2e8:	11 24       	eor	r1, r1
+ 2ea:	96 95       	lsr	r25
+ 2ec:	96 95       	lsr	r25
+ 2ee:	96 95       	lsr	r25
+ 2f0:	29 2f       	mov	r18, r25
+ 2f2:	30 e0       	ldi	r19, 0x00	; 0
+ 2f4:	30 93 88 00 	sts	0x0088, r19	; 0x800088 <gr1_10+0x1>
+ 2f8:	20 93 87 00 	sts	0x0087, r18	; 0x800087 <gr1_10>
+	gr1_1  = chislo_a % 10; // Переменной gr1_1 писваеваем цифру оставшуюся от вычисления chislo_1%10, это будут единицы в первой группе индикаторов
+ 2fc:	99 0f       	add	r25, r25
+ 2fe:	29 2f       	mov	r18, r25
+ 300:	22 0f       	add	r18, r18
+ 302:	22 0f       	add	r18, r18
+ 304:	92 0f       	add	r25, r18
+ 306:	89 1b       	sub	r24, r25
+ 308:	90 e0       	ldi	r25, 0x00	; 0
+ 30a:	90 93 8a 00 	sts	0x008A, r25	; 0x80008a <gr1_1+0x1>
+ 30e:	80 93 89 00 	sts	0x0089, r24	; 0x800089 <gr1_1>
+ 312:	08 95       	ret
+
+00000314 <chislo_2>:
+/********* функция раскладывает число на десятки и единицы **********/
+
+void chislo_2 (unsigned char chislo_b)
+{
+	
+	gr2_10 = chislo_b / 10; // Переменной gr2_10 писваеваем цифру оставшуюся от вычисления chislo_1%100/10, это будут десятки во второй группе индикаторов
+ 314:	9d ec       	ldi	r25, 0xCD	; 205
+ 316:	89 9f       	mul	r24, r25
+ 318:	91 2d       	mov	r25, r1
+ 31a:	11 24       	eor	r1, r1
+ 31c:	96 95       	lsr	r25
+ 31e:	96 95       	lsr	r25
+ 320:	96 95       	lsr	r25
+ 322:	29 2f       	mov	r18, r25
+ 324:	30 e0       	ldi	r19, 0x00	; 0
+ 326:	30 93 84 00 	sts	0x0084, r19	; 0x800084 <gr2_10+0x1>
+ 32a:	20 93 83 00 	sts	0x0083, r18	; 0x800083 <gr2_10>
+	gr2_1  = chislo_b % 10; // Переменной gr2_1 писваеваем цифру оставшуюся от вычисления chislo_1%10, это будут единицы во второй группе индикаторов
+ 32e:	99 0f       	add	r25, r25
+ 330:	29 2f       	mov	r18, r25
+ 332:	22 0f       	add	r18, r18
+ 334:	22 0f       	add	r18, r18
+ 336:	92 0f       	add	r25, r18
+ 338:	89 1b       	sub	r24, r25
+ 33a:	90 e0       	ldi	r25, 0x00	; 0
+ 33c:	90 93 86 00 	sts	0x0086, r25	; 0x800086 <gr2_1+0x1>
+ 340:	80 93 85 00 	sts	0x0085, r24	; 0x800085 <gr2_1>
+ 344:	08 95       	ret
+
+00000346 <chislo_3>:
+
+/********* функция раскладывает число на десятки и единицы **********/
+
+void chislo_3 (unsigned char chislo_c)
+{
+	gr3_10 = chislo_c / 10; // Переменной gr3_10 писваеваем цифру оставшуюся от вычисления chislo_1%100/10, это будут десятки в третьей группе индикаторов
+ 346:	9d ec       	ldi	r25, 0xCD	; 205
+ 348:	89 9f       	mul	r24, r25
+ 34a:	91 2d       	mov	r25, r1
+ 34c:	11 24       	eor	r1, r1
+ 34e:	96 95       	lsr	r25
+ 350:	96 95       	lsr	r25
+ 352:	96 95       	lsr	r25
+ 354:	29 2f       	mov	r18, r25
+ 356:	30 e0       	ldi	r19, 0x00	; 0
+ 358:	30 93 80 00 	sts	0x0080, r19	; 0x800080 <gr3_10+0x1>
+ 35c:	20 93 7f 00 	sts	0x007F, r18	; 0x80007f <gr3_10>
+	gr3_1  = chislo_c % 10; // Переменной gr3_1 писваеваем цифру оставшуюся от вычисления chislo_1%10, это будут единицы в третьей группе индикаторов
+ 360:	99 0f       	add	r25, r25
+ 362:	29 2f       	mov	r18, r25
+ 364:	22 0f       	add	r18, r18
+ 366:	22 0f       	add	r18, r18
+ 368:	92 0f       	add	r25, r18
+ 36a:	89 1b       	sub	r24, r25
+ 36c:	90 e0       	ldi	r25, 0x00	; 0
+ 36e:	90 93 82 00 	sts	0x0082, r25	; 0x800082 <gr3_1+0x1>
+ 372:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <gr3_1>
+ 376:	08 95       	ret
+
+00000378 <zoomer_50ms>:
+}
+
+/********* функция зуммера **********/
+void zoomer_50ms (void)
+{
+	PORTB |= (1<<PB7);
+ 378:	c7 9a       	sbi	0x18, 7	; 24
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 37a:	83 ed       	ldi	r24, 0xD3	; 211
+ 37c:	90 e3       	ldi	r25, 0x30	; 48
+ 37e:	01 97       	sbiw	r24, 0x01	; 1
+ 380:	f1 f7       	brne	.-4      	; 0x37e <zoomer_50ms+0x6>
+ 382:	00 c0       	rjmp	.+0      	; 0x384 <zoomer_50ms+0xc>
+ 384:	00 00       	nop
+	_delay_ms(50);
+	PORTB &= ~(1<<PB7);
+ 386:	c7 98       	cbi	0x18, 7	; 24
+ 388:	08 95       	ret
+
+0000038a <setupMk>:
+
+
+void setupMk()  // Переменная содержит настройки портов МК.
+{
+	/********* Настраиваем порты ввода вывода**********/
+	DDRD |= (1<<PD7)|(1<<PD6)|(1<<PD5)|(1<<PD4)|(1<<PD3)|(1<<PD2)|(1<<PD1)|(1<<PD0); // Настраиваем прот D на выход. Порт D управляет сигментами выводя на них требуемое число.
+ 38a:	81 b3       	in	r24, 0x11	; 17
+ 38c:	9f ef       	ldi	r25, 0xFF	; 255
+ 38e:	91 bb       	out	0x11, r25	; 17
+	PORTD |= (1<<PD5)|(1<<PD4)|(1<<PD3)|(1<<PD2)|(1<<PD1)|(1<<PD0); // Подаем на первые 6ть пинов порт D высокий уровень.
+ 390:	82 b3       	in	r24, 0x12	; 18
+ 392:	8f 63       	ori	r24, 0x3F	; 63
+ 394:	82 bb       	out	0x12, r24	; 18
+	PORTD &= ~((1<<PD7)|(1<<PD6)); // На 7й и 6й пины порта D подаем низкий уровень.
+ 396:	82 b3       	in	r24, 0x12	; 18
+ 398:	8f 73       	andi	r24, 0x3F	; 63
+ 39a:	82 bb       	out	0x12, r24	; 18
+	
+	DDRB |= (1<<PB7)|(1<<PB6)|(1<<PB5)|(1<<PB4)|(1<<PB3)|(1<<PB2)|(1<<PB1)|(1<<PB0); // Настраиваем прот B на выход. Первые 5ть пинов будут управлять группами индикаторов.
+ 39c:	87 b3       	in	r24, 0x17	; 23
+ 39e:	97 bb       	out	0x17, r25	; 23
+	//PORTB |= (1<<PB5)|(1<<PB4)|(1<<PB3)|(1<<PB2)|(1<<PB1)|(1<<PB0); // Подаем высокий уровень на первые 5ть пинов прота B.
+	PORTB &= ~((1<<PB7)|(1<<PB6)|(1<<PB5)|(1<<PB4)|(1<<PB3)|(1<<PB2)|(1<<PB1)|(1<<PB0)); // Пины 6й и 7й порта B Настраиваем на низкий уровень.
+ 3a0:	88 b3       	in	r24, 0x18	; 24
+ 3a2:	18 ba       	out	0x18, r1	; 24
+	//DDRB |= (1<<PB6);
+	//PORTB &= ~(1<<PB6);
+	//PORTB |= 1<<PB6;
+	
+	DDRC &= ~((1<<PC2)|(1<<PC1)|(1<<PC0));  // Пины с 1го по 3й порта C настраиваем на вход. На этих пинах будут кнопки.
+ 3a4:	84 b3       	in	r24, 0x14	; 20
+ 3a6:	88 7f       	andi	r24, 0xF8	; 248
+ 3a8:	84 bb       	out	0x14, r24	; 20
+	DDRC |= (1<<PC3)|(1<<PC4)|(1<<PC5); // Пины с 3го по 5й порта C настраиваем на выход. Данные пины управляют нагрузкой.
+ 3aa:	84 b3       	in	r24, 0x14	; 20
+ 3ac:	88 63       	ori	r24, 0x38	; 56
+ 3ae:	84 bb       	out	0x14, r24	; 20
+	PORTC |= (1<<PC2)|(1<<PC1)|(1<<PC0); // На пины с 1го по 2й порта C подаем высокий уровень. Кнопка будет срабатывать при появлении низкого уровня на пинах.
+ 3b0:	85 b3       	in	r24, 0x15	; 21
+ 3b2:	87 60       	ori	r24, 0x07	; 7
+ 3b4:	85 bb       	out	0x15, r24	; 21
+	PORTC &= ~((1<<PC3)|(1<<PC4)|(1<<PC5)); // На пины с 3го по 5й подаем низкий уровень. Данные пины управляют нагрузкой.
+ 3b6:	85 b3       	in	r24, 0x15	; 21
+ 3b8:	87 7c       	andi	r24, 0xC7	; 199
+ 3ba:	85 bb       	out	0x15, r24	; 21
+	//PORTC |= (1<<PC3)|(1<<PC4)|(1<<PC5);
+	
+	/********* Настраиваем таймкрсчетчик 0 **********/
+	TCCR0 |= (1<<CS01); // настриваем предделитель таймерасчетчика 0 на 8 тем самым запуская таймер счетчик. Уменьшая частоту в восемьраз 1000000/8=125000f. 1/125000=0.000008мкс.
+ 3bc:	83 b7       	in	r24, 0x33	; 51
+ 3be:	82 60       	ori	r24, 0x02	; 2
+ 3c0:	83 bf       	out	0x33, r24	; 51
+	TIMSK |= (1<<TOIE0); // Разрешаем прерывание по переполнению таймер счетчика 0.
+ 3c2:	89 b7       	in	r24, 0x39	; 57
+ 3c4:	81 60       	ori	r24, 0x01	; 1
+ 3c6:	89 bf       	out	0x39, r24	; 57
+	TCNT0 = 0; // Сбрасываем содержимое регистра TCNT0 в 0 во избежании попадания в него разного мусора.
+ 3c8:	12 be       	out	0x32, r1	; 50
+	
+	/********* Настраиваем таймкрсчетчик 1 **********/
+	
+	TCCR1B &= ~(1<<CS12); // настраиваем предделитель таймера счетчика 1 на 64 тем самым запуская таймер счетчик. Уменьшая частоту в 64 раза 1000000/64=15625f. 1/15625=0.000064мкс.
+ 3ca:	8e b5       	in	r24, 0x2e	; 46
+ 3cc:	8b 7f       	andi	r24, 0xFB	; 251
+ 3ce:	8e bd       	out	0x2e, r24	; 46
+	TCCR1B |= (1<<CS11)|(1<<CS10); // настраиваем предделитель таймера счетчика 1 на 64 тем самым запуская таймер счетчик. Уменьшая частоту в 64 раза 1000000/64=15625f. 1/15625=0.000064мкс.
+ 3d0:	8e b5       	in	r24, 0x2e	; 46
+ 3d2:	83 60       	ori	r24, 0x03	; 3
+ 3d4:	8e bd       	out	0x2e, r24	; 46
+	TCCR1B |= (1<<WGM12); // Настраиваем сброс регистра TCNT1 в ноль при совпадении с регистром OCR1A.
+ 3d6:	8e b5       	in	r24, 0x2e	; 46
+ 3d8:	88 60       	ori	r24, 0x08	; 8
+ 3da:	8e bd       	out	0x2e, r24	; 46
+	TIMSK |= (1<<OCIE1A); // Разрешение прерывания пр совпадении таймера счетчика 1.
+ 3dc:	89 b7       	in	r24, 0x39	; 57
+ 3de:	80 61       	ori	r24, 0x10	; 16
+ 3e0:	89 bf       	out	0x39, r24	; 57
+	//OCR1A = 15625; // Заносим в регистр совпадения число 15625. Теперь когда счет в регистре TCNT1 дойдет до числа 15625 мы получим временной интервал 1 секунда.
+	OCR1A = 7812;
+ 3e2:	84 e8       	ldi	r24, 0x84	; 132
+ 3e4:	9e e1       	ldi	r25, 0x1E	; 30
+ 3e6:	9b bd       	out	0x2b, r25	; 43
+ 3e8:	8a bd       	out	0x2a, r24	; 42
+	TCNT1 = 0; // Сбрасываем содержимое регистра TCNT1 в 0 во избежании попадания в него разного мусора.
+ 3ea:	1d bc       	out	0x2d, r1	; 45
+ 3ec:	1c bc       	out	0x2c, r1	; 44
+ 3ee:	2f e3       	ldi	r18, 0x3F	; 63
+ 3f0:	8d e0       	ldi	r24, 0x0D	; 13
+ 3f2:	93 e0       	ldi	r25, 0x03	; 3
+ 3f4:	21 50       	subi	r18, 0x01	; 1
+ 3f6:	80 40       	sbci	r24, 0x00	; 0
+ 3f8:	90 40       	sbci	r25, 0x00	; 0
+ 3fa:	e1 f7       	brne	.-8      	; 0x3f4 <setupMk+0x6a>
+ 3fc:	00 c0       	rjmp	.+0      	; 0x3fe <setupMk+0x74>
+ 3fe:	00 00       	nop
+	
+	_delay_ms(1000);
+
+		PORTB |= (1<<PB7);
+ 400:	c7 9a       	sbi	0x18, 7	; 24
+ 402:	83 e2       	ldi	r24, 0x23	; 35
+ 404:	94 ef       	ldi	r25, 0xF4	; 244
+ 406:	01 97       	sbiw	r24, 0x01	; 1
+ 408:	f1 f7       	brne	.-4      	; 0x406 <__LOCK_REGION_LENGTH__+0x6>
+ 40a:	00 c0       	rjmp	.+0      	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+ 40c:	00 00       	nop
+		_delay_ms(250);
+		PORTB &= ~(1<<PB7);
+ 40e:	c7 98       	cbi	0x18, 7	; 24
+	
+	
+	sei(); // Глобальное разрешение прерываний.
+ 410:	78 94       	sei
+ 412:	08 95       	ret
+
+00000414 <EEPROM_write>:
+
+
+void EEPROM_write(unsigned int uiAddress, unsigned char ucData)
+{
+	
+	while(EECR & (1<<EEWE))
+ 414:	e1 99       	sbic	0x1c, 1	; 28
+ 416:	fe cf       	rjmp	.-4      	; 0x414 <EEPROM_write>
+	;
+	
+	EEAR = uiAddress;
+ 418:	9f bb       	out	0x1f, r25	; 31
+ 41a:	8e bb       	out	0x1e, r24	; 30
+	
+	EEDR = ucData;
+ 41c:	6d bb       	out	0x1d, r22	; 29
+	
+	EECR |= (1<<EEMWE);
+ 41e:	e2 9a       	sbi	0x1c, 2	; 28
+	
+	EECR |= (1<<EEWE);
+ 420:	e1 9a       	sbi	0x1c, 1	; 28
+ 422:	08 95       	ret
+
+00000424 <EEPROM_read>:
+
+
+unsigned char EEPROM_read(unsigned int uiAddress)
+{
+	
+	while(EECR & (1<<EEWE))
+ 424:	e1 99       	sbic	0x1c, 1	; 28
+ 426:	fe cf       	rjmp	.-4      	; 0x424 <EEPROM_read>
+	;
+	
+	EEAR = uiAddress;
+ 428:	9f bb       	out	0x1f, r25	; 31
+ 42a:	8e bb       	out	0x1e, r24	; 30
+	
+	EECR |= (1<<EERE);
+ 42c:	e0 9a       	sbi	0x1c, 0	; 28
+	
+	return EEDR;
+ 42e:	8d b3       	in	r24, 0x1d	; 29
+ 430:	08 95       	ret
+
+00000432 <main>:
+unsigned char EEPROM_read(unsigned int uiAddress); //Функция отвечает за чтение данных из EEPROM памяти
+
+int main(void)
+{
+ 
+  setupMk(); // Функция содержит настройки портов МК.
+ 432:	ab df       	rcall	.-170    	; 0x38a <setupMk>
+  
+    if ((~PINC & (1<<PC0)) && (~PINC & (1<<PC2))) // При одновременно нажатых кнопках 1 и 3, при старте устройства данные в памяти EEPROM обнуляются
+ 434:	98 99       	sbic	0x13, 0	; 19
+ 436:	0e c0       	rjmp	.+28     	; 0x454 <main+0x22>
+ 438:	9a 99       	sbic	0x13, 2	; 19
+ 43a:	0c c0       	rjmp	.+24     	; 0x454 <main+0x22>
+    {
+	    EEPROM_write(0x01, 0x00);
+ 43c:	60 e0       	ldi	r22, 0x00	; 0
+ 43e:	81 e0       	ldi	r24, 0x01	; 1
+ 440:	90 e0       	ldi	r25, 0x00	; 0
+ 442:	e8 df       	rcall	.-48     	; 0x414 <EEPROM_write>
+	    EEPROM_write(0x02, 0x00);
+ 444:	60 e0       	ldi	r22, 0x00	; 0
+ 446:	82 e0       	ldi	r24, 0x02	; 2
+ 448:	90 e0       	ldi	r25, 0x00	; 0
+ 44a:	e4 df       	rcall	.-56     	; 0x414 <EEPROM_write>
+	    EEPROM_write(0x03, 0x00);
+ 44c:	60 e0       	ldi	r22, 0x00	; 0
+ 44e:	83 e0       	ldi	r24, 0x03	; 3
+ 450:	90 e0       	ldi	r25, 0x00	; 0
+ 452:	e0 df       	rcall	.-64     	; 0x414 <EEPROM_write>
+    }
+  
+ ucChuslo_1 = EEPROM_read(0x01);  // Считываем настройки из памяти EEPROM для первого индикатора
+ 454:	81 e0       	ldi	r24, 0x01	; 1
+ 456:	90 e0       	ldi	r25, 0x00	; 0
+ 458:	e5 df       	rcall	.-54     	; 0x424 <EEPROM_read>
+ 45a:	80 93 7b 00 	sts	0x007B, r24	; 0x80007b <ucChuslo_1>
+ ucChuslo_2 = EEPROM_read(0x02);  // Считываем настройки из памяти EEPROM для второго индикатора
+ 45e:	82 e0       	ldi	r24, 0x02	; 2
+ 460:	90 e0       	ldi	r25, 0x00	; 0
+ 462:	e0 df       	rcall	.-64     	; 0x424 <EEPROM_read>
+ 464:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <ucChuslo_2>
+ ucChuslo_3 = EEPROM_read(0x03);  // Считываем настройки из памяти EEPROM для третьего индикатора
+ 468:	83 e0       	ldi	r24, 0x03	; 3
+ 46a:	90 e0       	ldi	r25, 0x00	; 0
+ 46c:	db df       	rcall	.-74     	; 0x424 <EEPROM_read>
+ 46e:	80 93 79 00 	sts	0x0079, r24	; 0x800079 <ucChuslo_3>
+		{
+			
+			if (ucDelayBatton_2 == 6)  // при удержании конпки 2, три и более секунды попадаем в режим настройки
+			{
+				
+				viborGruppi = 1; // переменная отвечает за выбор группы индикаторов (пары индикаторов)
+ 472:	dd 24       	eor	r13, r13
+ 474:	d3 94       	inc	r13
+			
+			zoomer_50ms (); // пикаем зуммером при нажатии кнопки
+			
+			if (ucChuslo_3 >= 60)
+			{
+				ucChuslo_3 = 60;
+ 476:	0c e3       	ldi	r16, 0x3C	; 60
+					
+					else if (viborGruppi == 3)
+						{
+							
+							viborGruppi = 4; // переменная отвечает за выбор группы индикаторов (пары индикаторов)
+							ucStartTimer = 4;
+ 478:	68 94       	set
+ 47a:	ff 24       	eor	r15, r15
+ 47c:	f2 f8       	bld	r15, 2
+				}
+			
+				else if (viborGruppi == 2)
+					{
+						
+						viborGruppi = 3; // переменная отвечает за выбор группы индикаторов (пары индикаторов)
+ 47e:	13 e0       	ldi	r17, 0x03	; 3
+			}
+			
+			else if (viborGruppi == 1)
+				{
+					
+					viborGruppi = 2; // переменная отвечает за выбор группы индикаторов (пары индикаторов)
+ 480:	d2 e0       	ldi	r29, 0x02	; 2
+		{
+			
+			if (ucDelayBatton_2 == 6)  // при удержании конпки 2, три и более секунды попадаем в режим настройки
+			{
+				
+				viborGruppi = 1; // переменная отвечает за выбор группы индикаторов (пары индикаторов)
+ 482:	cd 2d       	mov	r28, r13
+
+
+
+	if (ucStartTimer == 4)
+	{
+		if (ucDelaySeconds == 1) PORTB ^= 1<<PB6, ucDelaySeconds = 0; 
+ 484:	68 94       	set
+ 486:	ee 24       	eor	r14, r14
+ 488:	e6 f8       	bld	r14, 6
+
+  
+    while (1) 
+    {
+		
+		chislo_1(ucChuslo_1); // число которое будет выведено в первой группе индикаторов.
+ 48a:	80 91 7b 00 	lds	r24, 0x007B	; 0x80007b <ucChuslo_1>
+ 48e:	29 df       	rcall	.-430    	; 0x2e2 <chislo_1>
+		
+		chislo_2(ucChuslo_2); // число которое будет выведено во второй группе индикаторов.
+ 490:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <ucChuslo_2>
+ 494:	3f df       	rcall	.-386    	; 0x314 <chislo_2>
+		
+		chislo_3(ucChuslo_3); // число которое будет выведено в третьей группе индикаторов.
+ 496:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <ucChuslo_3>
+ 49a:	55 df       	rcall	.-342    	; 0x346 <chislo_3>
+
+	
+
+		if (~PINC & (1<<PC1)) // При нажатии кнопки 2 входим в режим настройки таймера.
+ 49c:	99 99       	sbic	0x13, 1	; 19
+ 49e:	36 c0       	rjmp	.+108    	; 0x50c <__stack+0xad>
+		{
+			
+			if (ucDelayBatton_2 == 6)  // при удержании конпки 2, три и более секунды попадаем в режим настройки
+ 4a0:	80 91 7c 00 	lds	r24, 0x007C	; 0x80007c <ucDelayBatton_2>
+ 4a4:	86 30       	cpi	r24, 0x06	; 6
+ 4a6:	29 f4       	brne	.+10     	; 0x4b2 <__stack+0x53>
+			{
+				
+				viborGruppi = 1; // переменная отвечает за выбор группы индикаторов (пары индикаторов)
+ 4a8:	c0 93 7e 00 	sts	0x007E, r28	; 0x80007e <viborGruppi>
+				ucStartTimer = 1;
+ 4ac:	c0 93 78 00 	sts	0x0078, r28	; 0x800078 <ucStartTimer>
+ 4b0:	31 c0       	rjmp	.+98     	; 0x514 <__stack+0xb5>
+				
+			}
+			
+			else if (viborGruppi == 1)
+ 4b2:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+ 4b6:	81 30       	cpi	r24, 0x01	; 1
+ 4b8:	69 f4       	brne	.+26     	; 0x4d4 <__stack+0x75>
+				{
+					
+					viborGruppi = 2; // переменная отвечает за выбор группы индикаторов (пары индикаторов)
+ 4ba:	d0 93 7e 00 	sts	0x007E, r29	; 0x80007e <viborGruppi>
+					ucStartTimer = 2;
+ 4be:	d0 93 78 00 	sts	0x0078, r29	; 0x800078 <ucStartTimer>
+					while (~PINC & (1<<PC1))
+ 4c2:	99 9b       	sbis	0x13, 1	; 19
+ 4c4:	fe cf       	rjmp	.-4      	; 0x4c2 <__stack+0x63>
+ 4c6:	8f e4       	ldi	r24, 0x4F	; 79
+ 4c8:	93 ec       	ldi	r25, 0xC3	; 195
+ 4ca:	01 97       	sbiw	r24, 0x01	; 1
+ 4cc:	f1 f7       	brne	.-4      	; 0x4ca <__stack+0x6b>
+ 4ce:	00 c0       	rjmp	.+0      	; 0x4d0 <__stack+0x71>
+ 4d0:	00 00       	nop
+ 4d2:	15 c0       	rjmp	.+42     	; 0x4fe <__stack+0x9f>
+					;
+					_delay_ms(200);
+				}
+			
+				else if (viborGruppi == 2)
+ 4d4:	82 30       	cpi	r24, 0x02	; 2
+ 4d6:	69 f4       	brne	.+26     	; 0x4f2 <__stack+0x93>
+					{
+						
+						viborGruppi = 3; // переменная отвечает за выбор группы индикаторов (пары индикаторов)
+ 4d8:	10 93 7e 00 	sts	0x007E, r17	; 0x80007e <viborGruppi>
+						ucStartTimer = 3;
+ 4dc:	10 93 78 00 	sts	0x0078, r17	; 0x800078 <ucStartTimer>
+						while (~PINC & (1<<PC1))
+ 4e0:	99 9b       	sbis	0x13, 1	; 19
+ 4e2:	fe cf       	rjmp	.-4      	; 0x4e0 <__stack+0x81>
+ 4e4:	8f e4       	ldi	r24, 0x4F	; 79
+ 4e6:	93 ec       	ldi	r25, 0xC3	; 195
+ 4e8:	01 97       	sbiw	r24, 0x01	; 1
+ 4ea:	f1 f7       	brne	.-4      	; 0x4e8 <__stack+0x89>
+ 4ec:	00 c0       	rjmp	.+0      	; 0x4ee <__stack+0x8f>
+ 4ee:	00 00       	nop
+ 4f0:	06 c0       	rjmp	.+12     	; 0x4fe <__stack+0x9f>
+						;
+						_delay_ms(200);
+					}
+					
+					else if (viborGruppi == 3)
+ 4f2:	83 30       	cpi	r24, 0x03	; 3
+ 4f4:	09 f0       	breq	.+2      	; 0x4f8 <__stack+0x99>
+ 4f6:	f4 c0       	rjmp	.+488    	; 0x6e0 <__stack+0x281>
+						{
+							
+							viborGruppi = 4; // переменная отвечает за выбор группы индикаторов (пары индикаторов)
+							ucStartTimer = 4;
+ 4f8:	f0 92 78 00 	sts	0x0078, r15	; 0x800078 <ucStartTimer>
+ 4fc:	04 c0       	rjmp	.+8      	; 0x506 <__stack+0xa7>
+						}
+			
+			if (viborGruppi>3)
+ 4fe:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+ 502:	84 30       	cpi	r24, 0x04	; 4
+ 504:	18 f0       	brcs	.+6      	; 0x50c <__stack+0xad>
+			{
+				viborGruppi = 0;
+ 506:	10 92 7e 00 	sts	0x007E, r1	; 0x80007e <viborGruppi>
+ 50a:	64 c0       	rjmp	.+200    	; 0x5d4 <__stack+0x175>
+			}
+		}
+
+/******************** Данный участок кода отвечает за настройку первого числа для первой пары индикаторов**********************************/		
+	
+	if (viborGruppi == 1)  // Если переменная равно 1 зачит мы вошли в настройку первой группы индикаторов (первой пары) и можем увеличивать или уменьшать значение.
+ 50c:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+ 510:	81 30       	cpi	r24, 0x01	; 1
+ 512:	71 f5       	brne	.+92     	; 0x570 <__stack+0x111>
+	{
+	
+		if (~PINC & (1<<PC0)) // нажимаю кнопку на пине PC0 мы увиличиваем значение на первой паре индикаторов
+ 514:	98 99       	sbic	0x13, 0	; 19
+ 516:	e8 c0       	rjmp	.+464    	; 0x6e8 <__stack+0x289>
+		{
+			ucChuslo_1++;
+ 518:	80 91 7b 00 	lds	r24, 0x007B	; 0x80007b <ucChuslo_1>
+ 51c:	8f 5f       	subi	r24, 0xFF	; 255
+ 51e:	80 93 7b 00 	sts	0x007B, r24	; 0x80007b <ucChuslo_1>
+ 522:	8f e4       	ldi	r24, 0x4F	; 79
+ 524:	93 ec       	ldi	r25, 0xC3	; 195
+ 526:	01 97       	sbiw	r24, 0x01	; 1
+ 528:	f1 f7       	brne	.-4      	; 0x526 <__stack+0xc7>
+ 52a:	00 c0       	rjmp	.+0      	; 0x52c <__stack+0xcd>
+ 52c:	00 00       	nop
+			_delay_ms(200);
+			
+			zoomer_50ms (); // пикаем зуммером при нажатии кнопки
+ 52e:	24 df       	rcall	.-440    	; 0x378 <zoomer_50ms>
+			
+			if (ucChuslo_1 >= 60)
+ 530:	80 91 7b 00 	lds	r24, 0x007B	; 0x80007b <ucChuslo_1>
+ 534:	8c 33       	cpi	r24, 0x3C	; 60
+ 536:	10 f0       	brcs	.+4      	; 0x53c <__stack+0xdd>
+			{
+				ucChuslo_1 = 60;
+ 538:	00 93 7b 00 	sts	0x007B, r16	; 0x80007b <ucChuslo_1>
+			}
+			
+			EEPROM_write(0x01, ucChuslo_1); //записываем в память EEPROM число настроенное на превом индикаторе
+ 53c:	60 91 7b 00 	lds	r22, 0x007B	; 0x80007b <ucChuslo_1>
+ 540:	81 e0       	ldi	r24, 0x01	; 1
+ 542:	90 e0       	ldi	r25, 0x00	; 0
+ 544:	67 df       	rcall	.-306    	; 0x414 <EEPROM_write>
+		}
+		
+		if (~PINC & (1<<PC2)) // нажимаю кнопку на пине PC2 мы уменьшаем значение на первой паре индикаторов
+ 546:	9a 99       	sbic	0x13, 2	; 19
+ 548:	13 c0       	rjmp	.+38     	; 0x570 <__stack+0x111>
+		{
+
+			if (ucChuslo_1 > 0)
+ 54a:	80 91 7b 00 	lds	r24, 0x007B	; 0x80007b <ucChuslo_1>
+ 54e:	88 23       	and	r24, r24
+ 550:	49 f0       	breq	.+18     	; 0x564 <__stack+0x105>
+			{
+				ucChuslo_1--;
+ 552:	81 50       	subi	r24, 0x01	; 1
+ 554:	80 93 7b 00 	sts	0x007B, r24	; 0x80007b <ucChuslo_1>
+ 558:	8f e4       	ldi	r24, 0x4F	; 79
+ 55a:	93 ec       	ldi	r25, 0xC3	; 195
+ 55c:	01 97       	sbiw	r24, 0x01	; 1
+ 55e:	f1 f7       	brne	.-4      	; 0x55c <__stack+0xfd>
+ 560:	00 c0       	rjmp	.+0      	; 0x562 <__stack+0x103>
+ 562:	00 00       	nop
+				_delay_ms(200);
+				
+			}
+			
+			zoomer_50ms (); // пикаем зуммером при нажатии кнопки
+ 564:	09 df       	rcall	.-494    	; 0x378 <zoomer_50ms>
+			if (ucChuslo_1 == 0)
+			{
+				ucChuslo_1 = 0;
+			}
+			
+			EEPROM_write(0x01, ucChuslo_1); //записываем в память EEPROM число настроенное на превом индикаторе
+ 566:	60 91 7b 00 	lds	r22, 0x007B	; 0x80007b <ucChuslo_1>
+ 56a:	81 e0       	ldi	r24, 0x01	; 1
+ 56c:	90 e0       	ldi	r25, 0x00	; 0
+ 56e:	52 df       	rcall	.-348    	; 0x414 <EEPROM_write>
+	
+	}
+	
+/******************** Данный участок кода отвечает за настройку первого числа для первой пары индикаторов**********************************/
+
+if (viborGruppi == 2)  // Если переменная равно 2 зачит мы вошли в настройку второй группы индикаторов (второй пары) и можем увеличивать или уменьшать значение.
+ 570:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+ 574:	82 30       	cpi	r24, 0x02	; 2
+ 576:	71 f5       	brne	.+92     	; 0x5d4 <__stack+0x175>
+{
+	
+	if (~PINC & (1<<PC0)) // нажимаю кнопку на пине PC0 мы увиличиваем значение на второй паре индикаторов
+ 578:	98 99       	sbic	0x13, 0	; 19
+ 57a:	b9 c0       	rjmp	.+370    	; 0x6ee <__stack+0x28f>
+	{
+		ucChuslo_2++;
+ 57c:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <ucChuslo_2>
+ 580:	8f 5f       	subi	r24, 0xFF	; 255
+ 582:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <ucChuslo_2>
+ 586:	8f e4       	ldi	r24, 0x4F	; 79
+ 588:	93 ec       	ldi	r25, 0xC3	; 195
+ 58a:	01 97       	sbiw	r24, 0x01	; 1
+ 58c:	f1 f7       	brne	.-4      	; 0x58a <__stack+0x12b>
+ 58e:	00 c0       	rjmp	.+0      	; 0x590 <__stack+0x131>
+ 590:	00 00       	nop
+		_delay_ms(200);
+		
+		zoomer_50ms (); // пикаем зуммером при нажатии кнопки
+ 592:	f2 de       	rcall	.-540    	; 0x378 <zoomer_50ms>
+		
+		if (ucChuslo_2 >= 60)
+ 594:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <ucChuslo_2>
+ 598:	8c 33       	cpi	r24, 0x3C	; 60
+ 59a:	10 f0       	brcs	.+4      	; 0x5a0 <__stack+0x141>
+		{
+			ucChuslo_2 = 60;
+ 59c:	00 93 7a 00 	sts	0x007A, r16	; 0x80007a <ucChuslo_2>
+		}
+		
+		EEPROM_write(0x02, ucChuslo_2); //записываем в память EEPROM число настроенное на втором индикаторе
+ 5a0:	60 91 7a 00 	lds	r22, 0x007A	; 0x80007a <ucChuslo_2>
+ 5a4:	82 e0       	ldi	r24, 0x02	; 2
+ 5a6:	90 e0       	ldi	r25, 0x00	; 0
+ 5a8:	35 df       	rcall	.-406    	; 0x414 <EEPROM_write>
+	}
+	
+	if (~PINC & (1<<PC2)) // нажимаю кнопку на пине PC2 мы уменьшаем значение на второй паре индикаторов
+ 5aa:	9a 99       	sbic	0x13, 2	; 19
+ 5ac:	13 c0       	rjmp	.+38     	; 0x5d4 <__stack+0x175>
+	{
+
+		if (ucChuslo_2 > 0)
+ 5ae:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <ucChuslo_2>
+ 5b2:	88 23       	and	r24, r24
+ 5b4:	49 f0       	breq	.+18     	; 0x5c8 <__stack+0x169>
+		{
+			ucChuslo_2--;
+ 5b6:	81 50       	subi	r24, 0x01	; 1
+ 5b8:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <ucChuslo_2>
+ 5bc:	8f e4       	ldi	r24, 0x4F	; 79
+ 5be:	93 ec       	ldi	r25, 0xC3	; 195
+ 5c0:	01 97       	sbiw	r24, 0x01	; 1
+ 5c2:	f1 f7       	brne	.-4      	; 0x5c0 <__stack+0x161>
+ 5c4:	00 c0       	rjmp	.+0      	; 0x5c6 <__stack+0x167>
+ 5c6:	00 00       	nop
+			_delay_ms(200);
+		}
+		
+		zoomer_50ms (); // пикаем зуммером при нажатии кнопки
+ 5c8:	d7 de       	rcall	.-594    	; 0x378 <zoomer_50ms>
+		if (ucChuslo_2 == 0)
+		{
+			ucChuslo_2 = 0;
+		}
+		
+		EEPROM_write(0x02, ucChuslo_2); //записываем в память EEPROM число настроенное на втором индикаторе
+ 5ca:	60 91 7a 00 	lds	r22, 0x007A	; 0x80007a <ucChuslo_2>
+ 5ce:	82 e0       	ldi	r24, 0x02	; 2
+ 5d0:	90 e0       	ldi	r25, 0x00	; 0
+ 5d2:	20 df       	rcall	.-448    	; 0x414 <EEPROM_write>
+	
+}
+
+/******************** Данный участок кода отвечает за настройку первого числа для первой пары индикаторов**********************************/
+
+	if (viborGruppi == 3)  // Если переменная равно 3 зачит мы вошли в настройку третьей группы индикаторов (третьей пары) и можем увеличивать или уменьшать значение.
+ 5d4:	80 91 7e 00 	lds	r24, 0x007E	; 0x80007e <viborGruppi>
+ 5d8:	83 30       	cpi	r24, 0x03	; 3
+ 5da:	71 f5       	brne	.+92     	; 0x638 <__stack+0x1d9>
+	{
+		
+		if (~PINC & (1<<PC0)) // нажимаю кнопку на пине PC0 мы увиличиваем значение на третьей паре индикаторов
+ 5dc:	98 99       	sbic	0x13, 0	; 19
+ 5de:	17 c0       	rjmp	.+46     	; 0x60e <__stack+0x1af>
+		{
+			ucChuslo_3++;
+ 5e0:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <ucChuslo_3>
+ 5e4:	8f 5f       	subi	r24, 0xFF	; 255
+ 5e6:	80 93 79 00 	sts	0x0079, r24	; 0x800079 <ucChuslo_3>
+ 5ea:	8f e4       	ldi	r24, 0x4F	; 79
+ 5ec:	93 ec       	ldi	r25, 0xC3	; 195
+ 5ee:	01 97       	sbiw	r24, 0x01	; 1
+ 5f0:	f1 f7       	brne	.-4      	; 0x5ee <__stack+0x18f>
+ 5f2:	00 c0       	rjmp	.+0      	; 0x5f4 <__stack+0x195>
+ 5f4:	00 00       	nop
+			_delay_ms(200);
+			
+			zoomer_50ms (); // пикаем зуммером при нажатии кнопки
+ 5f6:	c0 de       	rcall	.-640    	; 0x378 <zoomer_50ms>
+			
+			if (ucChuslo_3 >= 60)
+ 5f8:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <ucChuslo_3>
+ 5fc:	8c 33       	cpi	r24, 0x3C	; 60
+ 5fe:	10 f0       	brcs	.+4      	; 0x604 <__stack+0x1a5>
+			{
+				ucChuslo_3 = 60;
+ 600:	00 93 79 00 	sts	0x0079, r16	; 0x800079 <ucChuslo_3>
+			}
+			
+			EEPROM_write(0x03, ucChuslo_3); //записываем в память EEPROM число настроенное на третьем индикаторе
+ 604:	60 91 79 00 	lds	r22, 0x0079	; 0x800079 <ucChuslo_3>
+ 608:	83 e0       	ldi	r24, 0x03	; 3
+ 60a:	90 e0       	ldi	r25, 0x00	; 0
+ 60c:	03 df       	rcall	.-506    	; 0x414 <EEPROM_write>
+			
+		}
+		
+		if (~PINC & (1<<PC2)) // нажимаю кнопку на пине PC2 мы уменьшаем значение на третьей паре индикаторов
+ 60e:	9a 99       	sbic	0x13, 2	; 19
+ 610:	13 c0       	rjmp	.+38     	; 0x638 <__stack+0x1d9>
+		{
+
+			if (ucChuslo_3 > 0)
+ 612:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <ucChuslo_3>
+ 616:	88 23       	and	r24, r24
+ 618:	49 f0       	breq	.+18     	; 0x62c <__stack+0x1cd>
+			{
+				ucChuslo_3--;
+ 61a:	81 50       	subi	r24, 0x01	; 1
+ 61c:	80 93 79 00 	sts	0x0079, r24	; 0x800079 <ucChuslo_3>
+ 620:	8f e4       	ldi	r24, 0x4F	; 79
+ 622:	93 ec       	ldi	r25, 0xC3	; 195
+ 624:	01 97       	sbiw	r24, 0x01	; 1
+ 626:	f1 f7       	brne	.-4      	; 0x624 <__stack+0x1c5>
+ 628:	00 c0       	rjmp	.+0      	; 0x62a <__stack+0x1cb>
+ 62a:	00 00       	nop
+				_delay_ms(200);
+			}
+			
+			zoomer_50ms (); // пикаем зуммером при нажатии кнопки
+ 62c:	a5 de       	rcall	.-694    	; 0x378 <zoomer_50ms>
+			if (ucChuslo_3 == 0)
+			{
+				ucChuslo_3 = 0;
+			}
+			
+			EEPROM_write(0x03, ucChuslo_3); //записываем в память EEPROM число настроенное на третьем индикаторе
+ 62e:	60 91 79 00 	lds	r22, 0x0079	; 0x800079 <ucChuslo_3>
+ 632:	83 e0       	ldi	r24, 0x03	; 3
+ 634:	90 e0       	ldi	r25, 0x00	; 0
+ 636:	ee de       	rcall	.-548    	; 0x414 <EEPROM_write>
+	
+/******************************************************************************************************************************************/
+
+
+
+	if (ucStartTimer == 4)
+ 638:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <ucStartTimer>
+ 63c:	84 30       	cpi	r24, 0x04	; 4
+ 63e:	09 f0       	breq	.+2      	; 0x642 <__stack+0x1e3>
+ 640:	24 cf       	rjmp	.-440    	; 0x48a <__stack+0x2b>
+	{
+		if (ucDelaySeconds == 1) PORTB ^= 1<<PB6, ucDelaySeconds = 0; 
+ 642:	80 91 76 00 	lds	r24, 0x0076	; 0x800076 <__data_end>
+ 646:	81 30       	cpi	r24, 0x01	; 1
+ 648:	29 f4       	brne	.+10     	; 0x654 <__stack+0x1f5>
+ 64a:	88 b3       	in	r24, 0x18	; 24
+ 64c:	8e 25       	eor	r24, r14
+ 64e:	88 bb       	out	0x18, r24	; 24
+ 650:	10 92 76 00 	sts	0x0076, r1	; 0x800076 <__data_end>
+		if ((ucChuslo_1 == 0) && (ucChuslo_2 == 0) && (ucChuslo_3 == 0)) PORTB &= ~(1<<PB6), ucDelayTimer = 0;
+ 654:	80 91 7b 00 	lds	r24, 0x007B	; 0x80007b <ucChuslo_1>
+ 658:	81 11       	cpse	r24, r1
+ 65a:	0e c0       	rjmp	.+28     	; 0x678 <__stack+0x219>
+ 65c:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <ucChuslo_2>
+ 660:	81 11       	cpse	r24, r1
+ 662:	0e c0       	rjmp	.+28     	; 0x680 <__stack+0x221>
+ 664:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <ucChuslo_3>
+ 668:	81 11       	cpse	r24, r1
+ 66a:	0b c0       	rjmp	.+22     	; 0x682 <__stack+0x223>
+ 66c:	c6 98       	cbi	0x18, 6	; 24
+ 66e:	10 92 77 00 	sts	0x0077, r1	; 0x800077 <ucDelayTimer>
+		
+		if (!(ucChuslo_1 == 0)) PORTC |= (1<<PC3);
+ 672:	80 91 7b 00 	lds	r24, 0x007B	; 0x80007b <ucChuslo_1>
+ 676:	81 11       	cpse	r24, r1
+ 678:	ab 9a       	sbi	0x15, 3	; 21
+		if (!(ucChuslo_2 == 0)) PORTC |= (1<<PC4);
+ 67a:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <ucChuslo_2>
+ 67e:	81 11       	cpse	r24, r1
+ 680:	ac 9a       	sbi	0x15, 4	; 21
+		if (!(ucChuslo_3 == 0)) PORTC |= (1<<PC5);
+ 682:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <ucChuslo_3>
+ 686:	81 11       	cpse	r24, r1
+ 688:	ad 9a       	sbi	0x15, 5	; 21
+		
+		if (ucDelayTimer == 120)
+ 68a:	80 91 77 00 	lds	r24, 0x0077	; 0x800077 <ucDelayTimer>
+ 68e:	88 37       	cpi	r24, 0x78	; 120
+ 690:	b9 f4       	brne	.+46     	; 0x6c0 <__stack+0x261>
+		{
+			
+			if (!(ucChuslo_1 == 0)) ucChuslo_1--;
+ 692:	80 91 7b 00 	lds	r24, 0x007B	; 0x80007b <ucChuslo_1>
+ 696:	88 23       	and	r24, r24
+ 698:	19 f0       	breq	.+6      	; 0x6a0 <__stack+0x241>
+ 69a:	81 50       	subi	r24, 0x01	; 1
+ 69c:	80 93 7b 00 	sts	0x007B, r24	; 0x80007b <ucChuslo_1>
+			if (!(ucChuslo_2 == 0)) ucChuslo_2--;
+ 6a0:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <ucChuslo_2>
+ 6a4:	88 23       	and	r24, r24
+ 6a6:	19 f0       	breq	.+6      	; 0x6ae <__stack+0x24f>
+ 6a8:	81 50       	subi	r24, 0x01	; 1
+ 6aa:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <ucChuslo_2>
+			if (!(ucChuslo_3 == 0)) ucChuslo_3--;
+ 6ae:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <ucChuslo_3>
+ 6b2:	88 23       	and	r24, r24
+ 6b4:	19 f0       	breq	.+6      	; 0x6bc <__stack+0x25d>
+ 6b6:	81 50       	subi	r24, 0x01	; 1
+ 6b8:	80 93 79 00 	sts	0x0079, r24	; 0x800079 <ucChuslo_3>
+			
+			ucDelayTimer = 0;
+ 6bc:	10 92 77 00 	sts	0x0077, r1	; 0x800077 <ucDelayTimer>
+		}
+			
+			
+			
+		
+		if (ucChuslo_1 == 0) PORTC &= ~(1<<PC3);
+ 6c0:	80 91 7b 00 	lds	r24, 0x007B	; 0x80007b <ucChuslo_1>
+ 6c4:	81 11       	cpse	r24, r1
+ 6c6:	01 c0       	rjmp	.+2      	; 0x6ca <__stack+0x26b>
+ 6c8:	ab 98       	cbi	0x15, 3	; 21
+		if (ucChuslo_2 == 0) PORTC &= ~(1<<PC4);
+ 6ca:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <ucChuslo_2>
+ 6ce:	81 11       	cpse	r24, r1
+ 6d0:	01 c0       	rjmp	.+2      	; 0x6d4 <__stack+0x275>
+ 6d2:	ac 98       	cbi	0x15, 4	; 21
+		if (ucChuslo_3 == 0) PORTC &= ~(1<<PC5);
+ 6d4:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <ucChuslo_3>
+ 6d8:	81 11       	cpse	r24, r1
+ 6da:	d7 ce       	rjmp	.-594    	; 0x48a <__stack+0x2b>
+ 6dc:	ad 98       	cbi	0x15, 5	; 21
+ 6de:	d1 ce       	rjmp	.-606    	; 0x482 <__stack+0x23>
+							
+							viborGruppi = 4; // переменная отвечает за выбор группы индикаторов (пары индикаторов)
+							ucStartTimer = 4;
+						}
+			
+			if (viborGruppi>3)
+ 6e0:	84 30       	cpi	r24, 0x04	; 4
+ 6e2:	08 f0       	brcs	.+2      	; 0x6e6 <__stack+0x287>
+ 6e4:	10 cf       	rjmp	.-480    	; 0x506 <__stack+0xa7>
+ 6e6:	76 cf       	rjmp	.-276    	; 0x5d4 <__stack+0x175>
+			}
+			
+			EEPROM_write(0x01, ucChuslo_1); //записываем в память EEPROM число настроенное на превом индикаторе
+		}
+		
+		if (~PINC & (1<<PC2)) // нажимаю кнопку на пине PC2 мы уменьшаем значение на первой паре индикаторов
+ 6e8:	9a 9b       	sbis	0x13, 2	; 19
+ 6ea:	2f cf       	rjmp	.-418    	; 0x54a <__stack+0xeb>
+ 6ec:	a5 cf       	rjmp	.-182    	; 0x638 <__stack+0x1d9>
+		}
+		
+		EEPROM_write(0x02, ucChuslo_2); //записываем в память EEPROM число настроенное на втором индикаторе
+	}
+	
+	if (~PINC & (1<<PC2)) // нажимаю кнопку на пине PC2 мы уменьшаем значение на второй паре индикаторов
+ 6ee:	9a 9b       	sbis	0x13, 2	; 19
+ 6f0:	5e cf       	rjmp	.-324    	; 0x5ae <__stack+0x14f>
+ 6f2:	a2 cf       	rjmp	.-188    	; 0x638 <__stack+0x1d9>
+
+000006f4 <_exit>:
+ 6f4:	f8 94       	cli
+
+000006f6 <__stop_program>:
+ 6f6:	ff cf       	rjmp	.-2      	; 0x6f6 <__stop_program>
